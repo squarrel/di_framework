@@ -12,7 +12,7 @@ class Cart:
 
 
 class Item:
-    def __init__(self, item_id, color, amount, price):
+    def __init__(self, item_id: int, color: str, amount: int, price: int):
         self.item_id = item_id
         self.color = color
         self.amount = amount

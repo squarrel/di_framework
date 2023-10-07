@@ -14,7 +14,7 @@ class Payment:
     def __init__(self, cart: Cart, card: Card, db: Db):
         self.cart = cart
         self.card = card
-        self.db = Db
+        self.db = db
 
     def charge(self):
         try:

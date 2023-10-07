@@ -1,7 +1,10 @@
+from database import Db
+
+
 class Mail:
     server = None
 
-    def __init__(self, address, port, username, password):
+    def __init__(self, address: str, port: int, username: str, password: str):
         self.address = address
         self.port = port
         self.username = username
