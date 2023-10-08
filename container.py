@@ -1,5 +1,8 @@
+from abstract import Vacuum
+import atexit
 from database import Db
 from notification import Mail
+from shop import Cart
 
 
 dependencies = (('db', Db), ('mail', Mail))
@@ -11,6 +14,10 @@ class Container:
         for d in dependencies:
             self.__dict__[d[0]] = d[1](self)
             self.dependencies.append(self.__dict__[d[0]])
+
+            if not isinstance(self.__dict__[d[0]], Vacuum):
+                raise ValueError("Container dependencies should be instances of Vacuum class.")
+        atexit.register(self.close)
 
     def open(self):
         for d in self.dependencies:
