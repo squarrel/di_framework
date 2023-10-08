@@ -1,6 +1,3 @@
-#from container import Container
-from database import Db
-from notification import Mail
 from payment import Card, Payment
 from shop import Cart, Item, User
 
