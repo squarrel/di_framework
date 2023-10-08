@@ -1,7 +1,5 @@
 from database import Db
 from notification import Mail
-from payment import Card
-from shop import Cart
 
 
 dependencies = (('db', Db), ('mail', Mail))
@@ -21,3 +19,12 @@ class Container:
     def close(self):
         for d in self.dependencies:
             d.stop()
+
+
+def di(func):
+    def func_wrapper(*args, **kwargs):
+        container = Container()
+        container.open()
+        func.c = container
+        return func(*args, **kwargs)
+    return func_wrapper
