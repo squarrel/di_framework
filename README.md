@@ -18,12 +18,29 @@ user.c.mail.send('support@mail.com', 'Message')
 
 ### Example adding new dependency to container
 ```
+#service.py
+from abstract import Vacuum
+
+class Service(Vacuum):
+    def __init__(self, container):
+        self.container = container
+
+    def start(self):
+        ```do something```
+
+    def stop(self):
+        ```do something```
+
+    def do(self):
+        ```do something```
+```
+```
 #container.py
-from somewhere import Service
+from service import Service
 
 dependencies = (('db', Db), ('mail', Mail), ('service', 'Service'))
 ```
 ```
 user = User()
-user.c.service('some_param')
+user.c.service.do('some_param')
 ```
