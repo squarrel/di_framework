@@ -11,21 +11,23 @@ class Card:
 
 
 class Payment:
-    def __init__(self, cart: Cart, card: Card, db: Db):
+    def __init__(self, container, cart: Cart, card: Card):
+        self.container = container
         self.cart = cart
         self.card = card
-        self.db = db
 
     def charge(self):
         try:
-            self.db.insert(
+            self.container.db.insert(
                 'payments',
                 self.cart.get_items(),
                 self.cart.calc_cost(),
-                self.card.get_id()
+                self.card.number
             )
+            print('Charged!')
             return True
-        except:
+        except Exception as e:
+            print(str(e))
             return False
 
 
