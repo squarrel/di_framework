@@ -1,5 +1,4 @@
 from abstract import Vacuum
-from database import Db
 
 
 class Mail(Vacuum):
