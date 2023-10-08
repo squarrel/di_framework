@@ -1,5 +1,5 @@
-from database import Db
-from shop import Item, Cart
+from container import di
+from shop import Cart
 
 
 class Card:
@@ -10,15 +10,15 @@ class Card:
         self.address = address
 
 
+@di
 class Payment:
-    def __init__(self, container, cart: Cart, card: Card):
-        self.container = container
+    def __init__(self, cart: Cart, card: Card):
         self.cart = cart
         self.card = card
 
     def charge(self):
         try:
-            self.container.db.insert(
+            self.c.db.insert(
                 'payments',
                 self.cart.get_items(),
                 self.cart.calc_cost(),
