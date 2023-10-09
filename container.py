@@ -13,7 +13,6 @@ class Container:
 
             if not isinstance(self.__dict__[d[0]], Vacuum):
                 raise ValueError("Container dependencies should be instances of Vacuum class.")
-        atexit.register(self.close)
 
     def open(self):
         for d in self.dependencies:
@@ -22,6 +21,9 @@ class Container:
     def close(self):
         for d in self.dependencies:
             d.stop()
+
+    def __del__(self):
+        self.close()
 
 
 def di(func):
