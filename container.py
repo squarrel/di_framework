@@ -1,11 +1,7 @@
 from abstract import Vacuum
 import atexit
-from database import Db
-from notification import Mail
+from settings import dependencies
 from shop import Cart
-
-
-dependencies = (('db', Db), ('mail', Mail))
 
 
 class Container:
