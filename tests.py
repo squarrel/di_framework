@@ -1,9 +1,21 @@
 from abstract import Vacuum
-from container import Container
+from container import Container, di
 from payment import Card, Payment
 import pytest
 from settings import dependencies
 from shop import Cart, Item
+from unittest import mock
+
+
+@mock.patch('container.Container.open')
+def test_start_method_called(mock_open):
+    @di
+    class Test:
+        pass
+
+    test = Test()
+
+    assert mock_open.called
 
 
 def test_payment_accesses_container():
