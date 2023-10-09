@@ -19,7 +19,7 @@ def test_payment_accesses_container():
 
 
 @pytest.fixture
-def user(scope="module"):
+def user():
     class User(Vacuum):
         def __init__(self, container):
             self.c = container
