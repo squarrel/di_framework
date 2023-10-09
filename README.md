@@ -2,7 +2,7 @@
 
 ## Usage
 
-Register dependencies inside container.py file. For user-defined classes to have access to the container, use the @di decorator.
+Register dependencies in settings.py file. For user-defined classes to have access to the container, use the @di decorator.
 
 ### Example Using @di decorator
 ```
@@ -35,7 +35,7 @@ class Service(Vacuum):
         ```do something```
 ```
 ```
-#container.py
+#settings.py
 from service import Service
 
 dependencies = (('db', Db), ('mail', Mail), ('service', 'Service'))
