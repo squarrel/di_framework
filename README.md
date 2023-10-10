@@ -38,7 +38,7 @@ class Service(Vacuum):
 #settings.py
 from service import Service
 
-dependencies = [('db', Db), ('mail', Mail), ('service', 'Service')]
+dependencies = [('db', Db), ('mail', Mail), ('service', Service)]
 ```
 ```
 user = User()
