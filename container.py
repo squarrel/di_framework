@@ -7,12 +7,13 @@ from shop import Cart
 class Container:
     def __init__(self):
         self.dependencies = []
-        for d in dependencies:
-            self.__dict__[d[0]] = d[1](self)
-            self.dependencies.append(self.__dict__[d[0]])
-
-            if not isinstance(self.__dict__[d[0]], Vacuum):
+        for name, dependency in dependencies:
+            dep_instance = dependency(self)
+            if not isinstance(dep_instance, Vacuum):
                 raise ValueError("Container dependencies should be instances of Vacuum class.")
+
+            setattr(self, name, dep_instance)
+            self.dependencies.append(dep_instance)
 
     def open(self):
         for d in self.dependencies:
