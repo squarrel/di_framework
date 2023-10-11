@@ -2,7 +2,10 @@
 
 ## Usage
 
-Register dependencies in settings.py file. For user-defined classes to have access to the container, use the @di decorator.
+Register dependencies in settings.py file. For user-defined classes to have access to the container, use the @di decorator. Scope of container: instance.  
+
+Run example: `python main.py`  
+Run tests: `pytest`  
 
 ### Example Using @di decorator
 ```
